@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  httpd:
+    build: .
+    ports:
+      - '8080:8080'
+    command: /usr/bin/run-httpd
+    volumes:
+      - shib-socket:/var/run/shibboleth
+
+  shib:
+    build: .
+    volumes:
+      - shib-socket:/var/run/shibboleth
+
+volumes:
+  shib-socket:
