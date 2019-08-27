@@ -7,7 +7,7 @@ USER 0
 RUN yum update -y \
   && yum install -y wget \
   && wget http://download.opensuse.org/repositories/security://shibboleth/CentOS_7/security:shibboleth.repo -P /etc/yum.repos.d \
-  && yum install -y shibboleth-3.0.4-3.2 \
+  && yum install -y shibboleth-3.0.4-3.2 php70w \
   && yum clean all -y \
   && rm -rf /var/cache/yum
 
