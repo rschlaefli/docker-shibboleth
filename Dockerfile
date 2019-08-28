@@ -1,17 +1,13 @@
-FROM centos/httpd-24-centos7
+FROM centos/php-72-centos7
 
 # switch to root for package installations
 USER 0
 
 # install httpd and shibboleth dependencies
 RUN yum update -y \
-  && yum install -y wget \
+  # && yum install -y wget \
   && wget http://download.opensuse.org/repositories/security://shibboleth/CentOS_7/security:shibboleth.repo -P /etc/yum.repos.d \
   && yum install -y shibboleth-3.0.4-3.2 \
-  %% yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
-  && yum-config-manager --enable remi-php72 \
-  && yum update \
-  && yum install -y php72 php72-php-fpm php72-php-gd php72-php-json php72-php-mbstring \
   && yum clean all -y \
   && rm -rf /var/cache/yum
 
